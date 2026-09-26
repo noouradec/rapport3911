@@ -1,17 +1,116 @@
-<html>
-    <head></head>
-    <body>
-        <h1>IFT 3911 - Devoir 1</h1>
-        <h2>Information générale</h2>
-        <p>
-            <span>Nom: </span>Noura Deconde
-            <br>
-            <span>Matricule: </span>20297806
-            <br>
-            <span>Courriel: </span>noura.deconde@umontreal.ca
-            <br>
-            <span>temps mis: </span> heures
-        </p>
-        <h2>Distribution des taches</h2>
-    </body>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>IFT 3911 - Devoir 1</title>
+
+    <style>
+        <!-- little style à modifier certainement-->
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 30px;
+            line-height: 1.6;
+            color: #222;
+        }
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: 35px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #222;
+        }
+
+        h2 {
+            font-size: 21px;
+            margin-top: 35px;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            font-size: 17px;
+            margin-top: 25px;
+        }
+
+        .info {
+            background-color: #f5f5f5;
+            padding: 18px 22px;
+            border-radius: 6px;
+        }
+
+        .info p {
+            margin: 5px 0;
+        }
+
+        .label {
+            font-weight: bold;
+            display: inline-block;
+            width: 100px;
+        }
+
+        ol {
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 18px;
+            padding-left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>IFT 3911 - Devoir 1</h1>
+
+    <h2>Informations générales</h2>
+
+    <div class="info">
+        <p><span class="label">Nom :</span> Noura Deconde</p>
+        <p><span class="label">Matricule :</span> 20297806</p>
+        <p><span class="label">Courriel :</span> noura.deconde@umontreal.ca</p>
+        <p><span class="label">Temps mis :</span> x heures</p>
+        <p><span class="label">Nom :</span> Andréa Noukoua</p>
+        <p><span class="label">Matricule :</span> 20279717</p>
+        <p><span class="label">Courriel :</span> andrea.noukoua@umontreal.ca</p>
+        <p><span class="label">Temps mis :</span> x heures</p>
+    </div>
+
+    <h2>Distribution des tâches</h2>
+
+    <h2>Explication des choix de conception</h2>
+
+    <h3>Modèle du domaine</h3>
+
+    <ol>
+        <li>
+            Un attribut <b>classe</b> a été ajouté à la classe
+            <b>Section</b> pour représenter les différentes classes possibles
+            (Première, Économique, Économique Premium, Familiale pour les vols,
+            par exemple), puisque nous n'avons pas de classes Enum dans
+            le modèle du domaine.
+        </li>
+
+        <li>
+            Pour le voyage naval, tout comme pour le voyage ferroviaire,
+            les ports doivent être visités dans un <b>ordre fixe</b>.
+            Nous avons donc ajouté la classe <b>EscalePortuaire</b>
+            (respectivement <b>ArretFerroviaire</b>) afin de représenter
+            la position de chaque port dans l'itinéraire.
+
+            La multiplicité est de <b>4..*</b>, car un itinéraire naval
+            visite au minimum trois ports distincts et le port de départ
+            doit également être le port d'arrivée. La séquence minimale
+            est donc de la forme A - B - C - A,
+            soit quatre escales.
+        </li>
+
+        <li>
+            Nous avons représenté <b>Ville</b> comme une classe plutôt que
+            comme un simple attribut des compagnies, car une même ville
+            peut être associée à plusieurs compagnies.
+        </li>
+    </ol>
+
+</body>
 </html>
