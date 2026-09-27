@@ -77,10 +77,24 @@
     </div>
 
     <h2>Distribution des tâches</h2>
+    <p>Le travail a été réparti entre les 3 memebre de l'équipe.
+        Premièrement, nous avons tous les 3 fais un diagramme de classe conceptuel et 3 diagrammes de sequence systémes. 
+        Par la suite Andréa a rassemblé ce qu'on a fait pour avoir les 2 premiers diagrammes. 
+        Ensuite, Noura s'est occupé de faire le diagramme de classe logiciel et Thierno le diagramme de paquets.
+    </p>
+    <ul>
+        <li><strong>Noura :</strong> Diagramme de classe logiciel.</li>
+        <li><strong>Andréa:</strong> Regroupement des diagrammes de classes conceptuels, regroupement des diagrammes de séquences systèmes.</li>
+        <li><strong>Thierno:</strong> Diagramme de paquets.</li>
+        <li><strong>Travail en équipe :</strong> diagramme de classe logiciel, modèle du domaine, diagrammes de séquence système, rapport.</li>
+    </ul>
+    
 
     <h2>Explication des choix de conception</h2>
 
     <h3>Modèle du domaine</h3>
+    <img src="modeledudomaine.jpg">
+    <h4>Les classes</h4>
 
     <ol>
         <li>
@@ -98,19 +112,142 @@
             (respectivement <b>ArretFerroviaire</b>) afin de représenter
             la position de chaque port dans l'itinéraire.
 
-            La multiplicité est de <b>4..*</b>, car un itinéraire naval
-            visite au minimum trois ports distincts et le port de départ
+            Pour un itinéraire naval, la multiplicité est de <b>4..*</b>, puisqu'il doit
+            visiter au minimum trois ports distincts et le port de départ
             doit également être le port d'arrivée. La séquence minimale
             est donc de la forme A - B - C - A,
             soit quatre escales.
+
+            Pour un trajet ferroviaire, la multiplicité minimale est de
+            <b>2</b>, puisque le trajet doit comporter au moins deux gares
+            distinctes.
+        </li>
+
+        
+        <li>
+            Une classe générale <b>Voyage</b> a été introduite afin de regrouper
+            les informations communes aux différents types de voyages, notamment
+            le numéro, la date et l'heure de départ ainsi que la date et l'heure
+            d'arrivée. Les classes <b>Vol</b>, <b>Trajet</b> et
+            <b>Itinéraire</b> représentent les différents types de voyages.
+        </li>
+
+
+        <li>
+            Les classes <b>SectionAvion</b>, <b>SectionTrain</b> et
+            <b>SectionPaquebot</b> permettent de représenter les sections propres
+            à chaque moyen de transport en gardant une structure commune
+            pour les sections et leur capacité.
+        </li>
+    </ol>
+
+    <h4>Associations entre les compagnies et les moyens de transport</h4>
+
+    <ol>
+        <li>
+        Une <b>composition</b> est utilisée entre <b>CompagnieAérienne</b>
+        et <b>Avion</b>, puisque chaque avion appartient a une seule
+        compagnie aérienne. Par contre ne compagnie peut exploiter plusieurs
+        avions.
         </li>
 
         <li>
-            Nous avons représenté <b>Ville</b> comme une classe plutôt que
-            comme un simple attribut des compagnies, car une même ville
-            peut être associée à plusieurs compagnies.
+            De manière similaire, une <b>CompagnieCroisière</b> peut exploiter
+            plusieurs <b>Paquebots</b>, tandis qu'un paquebot appartient a une
+            seule compagnie de croisière.
+        </li>
+
+        <li>
+            Une <b>LigneTrain</b> peut exploiter plusieurs <b>Trains</b>, tandis
+            qu'un train appartient à une seule ligne de train.
         </li>
     </ol>
+
+    <h4>Associations entre les moyens de transport et les voyages</h4>
+
+    <ol>
+        <li>
+            Un <b>Avion</b> peut être associé à plusieurs <b>Vols</b>, tandis
+            qu'un vol est assigné à un seul avion. Cette association permet au
+            même avion de faire plusieurs vols à des moments différents.
+        </li>
+
+        <li>
+            Un <b>Train</b> peut être associé à plusieurs
+            <b>Trajets</b> et un <b>Paquebot</b> peut être associé a plusieurs
+            <b>Itinéraires</b>.
+        </li>
+
+        <li>
+            Les associations entre <b>CompagnieAérienne</b> et <b>Vol</b>,
+            <b>LigneTrain</b> et <b>Trajet</b>, ainsi que
+            <b>CompagnieCroisière</b> et <b>Itinéraire</b> permettent
+            d'identifier quel organisme s'occupe de chaque voyage.
+        </li>
+    </ol>
+
+    <h4>Associations avec les lieux de départ et d'arrivée</h4>
+    <ol>
+        <li>
+            Les associations entre <b>Vol</b> et <b>Aéroport</b> sont
+            représentees par 2 associations differentes afin de différencier
+            l'<b>aéroport d'origine</b> et l'<b>aéroport de destination</b>.
+        </li>
+
+        <li>
+            Les associations avec <b>Ville</b> permettent de représenter la
+            ville dans laquelle se situe chaque <b>Aéroport</b>, <b>Gare</b>
+            ou <b>Port</b>. Une même ville peut être associée à plusieurs
+            infrastructures de transport.
+        </li>
+    </ol>
+
+    <h4>Ordre des arrêts et des escales</h4>
+    <ol>
+        <li>
+            Pour les <b>Itinéraires</b>, une association ordonnée avec
+            <b>EscalePortuaire</b> est utilisée pour conserver l'ordre dans
+            lequel les ports sont visités. La multiplicité minimale est de
+            <b>4</b>, puisque l'itinéraire doit visiter au moins trois ports
+            distincts et revenir au port de départ.
+        </li>
+
+        <li>
+            Pour les <b>Trajets</b>, une association ordonnée avec
+            <b>ArretFerroviaire</b> est utilisée pour conserver l'ordre des
+            gares parcourues. La multiplicité minimale est de <b>2</b>,
+            car il y a un minimum de deux gares demandé.
+        </li>
+    </ol>
+
+    <h4>Associations avec les réservations</h4>
+    <ol>
+        <li>
+            Une réservation est reliée à un seul type de voyage à la fois :
+            <b>Vol</b>, <b>Trajet</b> ou <b>Itinéraire</b>. La contrainte
+            <b>{xor}</b> est la pour indiquer qu'une réservation ne peut pas être
+            simultanément associée à plusieurs types de voyages.
+        </li>
+
+        <li>
+            Une <b>Réservation</b> peut être associee à un <b>Passager</b>
+            de manière optionnelle, puisque les informations du passager sont
+            fournies au moment du paiement.
+        </li>
+
+        <li>
+            Les associations entre <b>Réservation</b> et <b>Siège</b> ou
+            <b>Cabine</b> permettent de représenter la place réservée selon le
+            type de voyage.
+        </li>
+
+        <li>
+            Une <b>Réservation</b> est associée à un <b>Paiement</b> afin de
+            représenter le paiement effectué pour confirmer la réservation.
+        </li>
+    </ol>
+
+    
 
 </body>
 </html>
