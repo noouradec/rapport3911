@@ -473,12 +473,9 @@
 
 
     <h3>Diagrammes de séquence</h3>
-
-
     <h4>Réserver un siège</h4>
 
    <!-- <img src="reserversiegev3.jpg" alt="Diagramme de séquence - Réserver un siège"> --> 
-
     <ol>
         <li>
 
@@ -494,22 +491,7 @@
         </li>
 
         <li>
-            Le <b>ControleurReservation</b> délègue la recherche du voyage
-            au <b>RegistreVoyages</b> à l'aide de
-            <code>getVol(numero)</code> ou
-            <code>getTrajet(numero)</code>. Le contrôleur n'a ainsi pas
-            besoin de connaître la manière dont les voyages sont stockés, et cela permet de récupérer directement un voyage à partir de son numéro.
-        </li>
-
-        <li>
-            Une fois le voyage obtenu, le contrôleur lui demande les sièges
-            disponibles pour la section sélectionnée. Cette responsabilité
-            est attribuée au voyage conformément au principe
-            <b>Information Expert</b> décrit plus haut.
-        </li>
-
-        <li>
-            Une réservation est ensuite créée avec une date d'expiration
+            Une réservation est créée avec une date d'expiration
             située vingt-quatre heures après sa création(now() représentant la date et l'heure au moment de la création). L'objet Reservation(on suppose que le numéro associé est généré automatiquement) est finalement retourné à
             <b>InterfaceClient</b>, qui se charge d'afficher la confirmation au client.
         </li>
@@ -523,17 +505,10 @@
     <ol>
         <li>
             Lors du paiement, <b>InterfaceClient</b> transmet les
-            informations fournies par le client au
+            informations fournies par le client(via des boutons et champs de texte) au
             <b>ControleurPaiement</b>. Celui-ci obtient la réservation
             correspondante auprès du
             <b>RegistreReservationsActives</b>.
-        </li>
-
-        <li>
-            Le contrôleur demande ensuite directement à
-            <b>Reservation</b> si celle-ci est expirée avec
-            <code>estExpiree()</code>. Ce choix applique le principe
-            <b>Information Expert</b> décrit plus haut.
         </li>
 
         <li>
@@ -543,20 +518,12 @@
         </li>
 
         <li>
-            Si la réservation est toujours valide, le siège associé est
-            obtenu à partir de la réservation. Le siège permet ensuite
-            d'obtenir sa section et la section fournit le prix applicable
-            avec <code>getPrix()</code>.
-
-        </li>
-
-        <li>
             Une fois la validité de la réservation vérifiée et le prix
             obtenu, le paiement peut être créé. L'objet
             <b>Paiement</b> obtenu est ensuite retourné à l'interface,
             qui affiche la confirmation au client.
         </li>
-    </ol>
+    </ol> -->
 
 </body>
 
