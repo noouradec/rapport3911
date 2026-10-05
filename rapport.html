@@ -1,16 +1,17 @@
+<!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>IFT 3911 - Devoir 1</title>
 
     <style>
-        <!-- little style à modifier certainement-->
         body {
             font-family: Arial, sans-serif;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 50px auto;
-            padding: 0 30px;
-            line-height: 1.6;
+            padding: 0 35px;
+            line-height: 1.65;
             color: #222;
         }
 
@@ -22,14 +23,23 @@
         }
 
         h2 {
-            font-size: 21px;
+            font-size: 23px;
+            margin-top: 45px;
+            margin-bottom: 18px;
+            padding-bottom: 7px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        h3 {
+            font-size: 19px;
             margin-top: 35px;
             margin-bottom: 15px;
         }
 
-        h3 {
-            font-size: 17px;
-            margin-top: 25px;
+        h4 {
+            font-size: 16px;
+            margin-top: 28px;
+            margin-bottom: 12px;
         }
 
         .info {
@@ -48,13 +58,53 @@
             width: 100px;
         }
 
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 30px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f5f5f5;
+        }
+
+        .first_col {
+            font-weight: bold;
+        }
+
         ol {
-            padding-left: 25px;
+            padding-left: 27px;
         }
 
         li {
             margin-bottom: 18px;
             padding-left: 5px;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto 30px auto;
+            border: 1px solid #ddd;
+        }
+
+        code {
+            background-color: #f3f3f3;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        .principe {
+            font-style: italic;
         }
     </style>
 </head>
@@ -63,201 +113,451 @@
 
     <h1>IFT 3911 - Devoir 1</h1>
 
+
     <h2>Informations générales</h2>
 
     <div class="info">
-        <p><span class="label">Nom :</span> Noura Deconde</p>
-        <p><span class="label">Matricule :</span> 20297806</p>
-        <p><span class="label">Courriel :</span> noura.deconde@umontreal.ca</p>
-        <p><span class="label">Temps mis :</span> x heures</p>
-        <p><span class="label">Nom :</span> Andréa Noukoua</p>
-        <p><span class="label">Matricule :</span> 20279717</p>
-        <p><span class="label">Courriel :</span> andrea.noukoua@umontreal.ca</p>
-        <p><span class="label">Temps mis :</span> x heures</p>
+        <p>
+            <span class="label">Nom :</span>
+            Noura Deconde
+        </p>
+        <p>
+            <span class="label">Matricule :</span>
+            20297806
+        </p>
+        <p>
+            <span class="label">Courriel :</span>
+            noura.deconde@umontreal.ca
+        </p>
+        <p>
+            <span class="label">Temps mis :</span>
+            x heures
+        </p>
+
+        <br>
+
+        <p>
+            <span class="label">Nom :</span>
+            Andréa Noukoua
+        </p>
+        <p>
+            <span class="label">Matricule :</span>
+            20279717
+        </p>
+        <p>
+            <span class="label">Courriel :</span>
+            andrea.noukoua@umontreal.ca
+        </p>
+        <p>
+            <span class="label">Temps mis :</span>
+            10 heures
+        </p>
+
+           <p>
+            <span class="label">Nom :</span>
+            Thierno Diallo
+        </p>
+        <p>
+            <span class="label">Matricule :</span>
+            x
+        </p>
+        <p>
+            <span class="label">Courriel :</span>
+            x@umontreal.ca
+        </p>
+        <p>
+            <span class="label">Temps mis :</span>
+            x heures
+        </p>
     </div>
+
+
 
     <h2>Distribution des tâches</h2>
 
-    <table cellpadding="7px">
+    <table>
         <thead>
             <tr>
-            <th class="first_col"> Tâche </th>
-                <th> Noura </th>
-                <th> Andréa </th>
+                <th class="first_col">Tâche</th>
+                <th>Noura</th>
+                <th>Andréa</th>
                 <th>Thierno</th>
             </tr>
         </thead>
-        <tbody>
-        <tr>
-        <td class="first_col"> Diagramme de classe conceptuel </td> <td> 33.3% </td> <td>33.3%</td> <td>33.3%</td> </tr>
-        <tr>
-        <td class="first_col"> Diagramme sequence système </td>  <td> 33.3% </td> <td>33.3%</td> <td>33.3%</td> </tr>
-        <tr>
-        <td class="first_col"> Diagrammes sequences </td>  <td> payer son siège </td> <td>réserver un siège</td> <td>vérifier vols/lignes/itinéraires</td> </tr>
-        <td class="first_col"> Autres </td>  <td> Diagramme classe logiciel</td> <td>OCL</td> <td>Diagrame de paquets</td> </tr>
 
+        <tbody>
+            <tr>
+                <td class="first_col">Diagramme de classes conceptuel</td>
+                <td>33.3%</td>
+                <td>33.3%</td>
+                <td>33.3%</td>
+            </tr>
+
+            <tr>
+                <td class="first_col">Diagramme de séquence système</td>
+                <td>33.3%</td>
+                <td>33.3%</td>
+                <td>33.3%</td>
+            </tr>
+
+            <tr>
+                <td class="first_col">Diagrammes de séquence</td>
+                <td>Payer son siège</td>
+                <td>Réserver un siège</td>
+                <td>Vérifier vols/lignes/itinéraires</td>
+            </tr>
+
+            <tr>
+                <td class="first_col">Autres</td>
+                <td>Diagramme de classes logiciel + modèle du domaine </td>
+                <td>OCL + modèle du domaine + diagramme de classes </td>
+                <td>Diagramme de paquets + diagramme de classes + modèle du domaine </td>
+            </tr>
         </tbody>
     </table>
-    
+
+
 
     <h2>Explication des choix de conception</h2>
 
+
     <h3>Modèle du domaine</h3>
-    <img src="modeledudomaine.jpg">
-    <h4>Les classes</h4>
+
+    <!-- <img src="modeledudomaine.jpg" alt="Modèle du domaine"> -->
+
+    <h4>Organisation générale des classes</h4>
 
     <ol>
         <li>
-            Un attribut <b>classe</b> a été ajouté à la classe
-            <b>Section</b> pour représenter les différentes classes possibles
-            (Première, Économique, Économique Premium, Familiale pour les vols,
-            par exemple), puisque nous n'avons pas de classes Enum dans
-            le modèle du domaine.
+           Des classes "énumérations" ont été ajoutées pour représenter la liste exhaustive des valeurs de certains attributs(TypeSection,
+           StatutRéservation, priorité, DispositionSiege).
         </li>
 
         <li>
-            Pour le voyage naval, tout comme pour le voyage ferroviaire,
-            les ports doivent être visités dans un <b>ordre fixe</b>.
-            Nous avons donc ajouté la classe <b>EscalePortuaire</b>
-            (respectivement <b>ArretFerroviaire</b>) afin de représenter
-            la position de chaque port dans l'itinéraire.
+            Une classe générale <b>Voyage</b> a été introduite afin de
+            regrouper les informations communes aux différents types de
+            voyages, notamment le numéro ainsi que les dates et heures de
+            départ et d'arrivée.
 
-            Pour un itinéraire naval, la multiplicité est de <b>4..*</b>, puisqu'il doit
-            visiter au minimum trois ports distincts et le port de départ
-            doit également être le port d'arrivée. La séquence minimale
-            est donc de la forme A - B - C - A,
-            soit quatre escales.
-
-            Pour un trajet ferroviaire, la multiplicité minimale est de
-            <b>2</b>, puisque le trajet doit comporter au moins deux gares
-            distinctes.
+            Les classes <b>Vol</b>, <b>Trajet</b> et <b>Itinéraire</b>
+            spécialisent ensuite <b>Voyage</b> et représentent les
+            particularités propres aux voyages aérien, ferroviaire et naval.
+            Cette généralisation évite de dupliquer les informations partagées entre
+        les trois types de voyages.
         </li>
-
-        
-        <li>
-            Une classe générale <b>Voyage</b> a été introduite afin de regrouper
-            les informations communes aux différents types de voyages, notamment
-            le numéro, la date et l'heure de départ ainsi que la date et l'heure
-            d'arrivée. Les classes <b>Vol</b>, <b>Trajet</b> et
-            <b>Itinéraire</b> représentent les différents types de voyages.
-        </li>
-
 
         <li>
             Les classes <b>SectionAvion</b>, <b>SectionTrain</b> et
-            <b>SectionPaquebot</b> permettent de représenter les sections propres
-            à chaque moyen de transport en gardant une structure commune
-            pour les sections et leur capacité.
+            <b>SectionPaquebot</b> représentent les différents types de
+            sections propres aux moyens de transport.
+
+            Les sections d'un avion et d'un train partagent notamment la
+            notion de disposition des sièges, et spécialisent tous les deux une classe intermédiaire SectionSieges.
         </li>
     </ol>
 
-    <h4>Associations entre les compagnies et les moyens de transport</h4>
+
+
+    <h4>Lieux de départ et d'arrivée</h4>
 
     <ol>
         <li>
-        Une <b>composition</b> est utilisée entre <b>CompagnieAérienne</b>
-        et <b>Avion</b>, puisque chaque avion appartient a une seule
-        compagnie aérienne. Par contre ne compagnie peut exploiter plusieurs
-        avions.
+            Les relations entre <b>Vol</b> et <b>Aéroport</b> sont
+            représentées par deux associations distinctes afin de différencier
+            explicitement l'<b>aéroport d'origine</b> de
+            l'<b>aéroport de destination</b>.
         </li>
 
         <li>
-            De manière similaire, une <b>CompagnieCroisière</b> peut exploiter
-            plusieurs <b>Paquebots</b>, tandis qu'un paquebot appartient a une
-            seule compagnie de croisière.
-        </li>
-
-        <li>
-            Une <b>LigneTrain</b> peut exploiter plusieurs <b>Trains</b>, tandis
-            qu'un train appartient à une seule ligne de train.
+            Les associations avec <b>Ville</b> permettent de représenter
+            la ville dans laquelle se situe chaque <b>Aéroport</b>,
+            <b>Gare</b> ou <b>Port</b>. Etant donné que les valeurs de Ville peuvent être répétées, nous l'avons représenté comme une classe
+            conceptuelle à la place d'un attribut.
         </li>
     </ol>
 
-    <h4>Associations entre les moyens de transport et les voyages</h4>
-
-    <ol>
-        <li>
-            Un <b>Avion</b> peut être associé à plusieurs <b>Vols</b>, tandis
-            qu'un vol est assigné à un seul avion. Cette association permet au
-            même avion de faire plusieurs vols à des moments différents.
-        </li>
-
-        <li>
-            Un <b>Train</b> peut être associé à plusieurs
-            <b>Trajets</b> et un <b>Paquebot</b> peut être associé a plusieurs
-            <b>Itinéraires</b>.
-        </li>
-
-        <li>
-            Les associations entre <b>CompagnieAérienne</b> et <b>Vol</b>,
-            <b>LigneTrain</b> et <b>Trajet</b>, ainsi que
-            <b>CompagnieCroisière</b> et <b>Itinéraire</b> permettent
-            d'identifier quel organisme s'occupe de chaque voyage.
-        </li>
-    </ol>
-
-    <h4>Associations avec les lieux de départ et d'arrivée</h4>
-    <ol>
-        <li>
-            Les associations entre <b>Vol</b> et <b>Aéroport</b> sont
-            représentees par 2 associations differentes afin de différencier
-            l'<b>aéroport d'origine</b> et l'<b>aéroport de destination</b>.
-        </li>
-
-        <li>
-            Les associations avec <b>Ville</b> permettent de représenter la
-            ville dans laquelle se situe chaque <b>Aéroport</b>, <b>Gare</b>
-            ou <b>Port</b>. Une même ville peut être associée à plusieurs
-            infrastructures de transport.
-        </li>
-    </ol>
 
     <h4>Ordre des arrêts et des escales</h4>
+
     <ol>
         <li>
-            Pour les <b>Itinéraires</b>, une association ordonnée avec
-            <b>EscalePortuaire</b> est utilisée pour conserver l'ordre dans
-            lequel les ports sont visités. La multiplicité minimale est de
-            <b>4</b>, puisque l'itinéraire doit visiter au moins trois ports
-            distincts et revenir au port de départ.
+            Pour le voyage naval, les ports doivent être visités dans un
+            ordre déterminé. La classe <b>EscalePortuaire</b> permet donc
+            de représenter la position d'un port dans un itinéraire, et également d'encoder le fait que le port d'arrivée et de départ doit être
+            le même.
+
+            La multiplicité minimale est de <b>4</b>, puisque l'itinéraire
+            doit visiter au moins trois ports distincts et revenir à son
+            port de départ. Une séquence minimale est donc de la forme
+            A - B - C - A.
         </li>
 
         <li>
-            Pour les <b>Trajets</b>, une association ordonnée avec
-            <b>ArretFerroviaire</b> est utilisée pour conserver l'ordre des
-            gares parcourues. La multiplicité minimale est de <b>2</b>,
-            car il y a un minimum de deux gares demandé.
+            A l'opposé, pour le voyage ferroviaire, une classe intermédiaire n'a pas été ajoutée
+            entre le trajet et la Gare. Nous avons plutôt utilisé l'attribut d'association {ordered}(qui implique que l'ensemble des gares est un set),
+            et ainsi cela représente bien le fait que toutes les gares soient distinctes et que l'ensemble soit ordonné.
+
+            Un trajet comporte au minimum deux gares distinctes, ce qui
+            explique la multiplicité minimale de <b>2</b>.
         </li>
     </ol>
 
-    <h4>Associations avec les réservations</h4>
+
+    <h4>Réservations</h4>
+
+    <ol>
+
+        <li>
+            Une <b>Reservation</b> peut être associée à un
+            <b>Passager</b> de manière optionnelle, dépendamment de si la réservation a été confirmée ou non, ce qui justifie la cardinalité 0..1. De même pour la 
+            relation entre <b>Reservation</b> et <b>Paiement</b>.
+        </li>
+
+        <li>
+            Les spécialisations <b>ReservationSiege</b> et
+            <b>ReservationCabine</b> permettent de distinguer les deux
+            formes de réservation tout en conservant les caractéristiques
+            communes(priorité) dans <b>Reservation</b>.
+        </li>
+
+        <li>
+            <b>ReservationSiege</b> est associée au <b>Siege</b> réservé,
+            tandis que <b>ReservationCabine</b> est associée à la
+            <b>Cabine</b> réservée. Ces relations permettent d'identtifier avec précision la place concernée par une réservation.
+        </li>
+
+    </ol>
+
+    <h3>Diagramme de classes logiciel</h3>
+
+    <!-- <img src="cdimage.vpp.jpg" alt="Diagramme de classes logiciel"> -->
+
+    <p>
+        La <b>répartition des responsabilités</b> dans le modèle logiciel cherche
+        à maintenir une <b>forte cohésion</b> au sein des classes et un
+        <b>faible couplage</b> entre ces dernières.
+        Les principes GRASP, notamment <i>Contrôleur</i>,
+        <i>Expert d'information</i> et <i>Créateur</i>, ont également guidé
+        l'attribution des responsabilités.
+    </p>
+
+
+    <h4>Principe du Contrôleur</h4>
+
     <ol>
         <li>
-            Une réservation est reliée à un seul type de voyage à la fois :
-            <b>Vol</b>, <b>Trajet</b> ou <b>Itinéraire</b>. La contrainte
-            <b>{xor}</b> est la pour indiquer qu'une réservation ne peut pas être
-            simultanément associée à plusieurs types de voyages.
+            Les classes <b>ControleurReservation</b>,
+            <b>ControleurPaiement</b>, <b>ControleurVoyage</b> et les
+            autres contrôleurs du système reçoivent les opérations provenant
+            des interfaces(client et administrateur) et délèguent le travail aux
+            classes du systène.
         </li>
 
         <li>
-            Une <b>Réservation</b> peut être associee à un <b>Passager</b>
-            de manière optionnelle, puisque les informations du passager sont
-            fournies au moment du paiement.
+            Les opérations n'ont pas été regroupées dans un contrôleur
+            unique. Chaque contrôleur est associé à un ensemble cohérent
+            de responsabilités.
+
+            Par exemple, <b>ControleurReservation</b> coordonne les
+            opérations de réservation alors que
+            <b>ControleurPaiement</b> coordonne les opérations nécessaires
+            au paiement.
+
+            Cette séparation favorise une <b>forte cohésion</b> en évitant
+            qu'une seule classe effectue plusieurs opérations, évitant ainsi la <b>cohésion accidentelle</b>.
+        </li>
+
+    </ol>
+
+
+    <h4>Registres et recherche des objets(voyages), cohésion, couplage</h4>
+
+    <ol>
+        <li>
+            La classe <b>RegistreVoyages</b> permet d'encapsuler la recherche des
+            voyages existants. Elle fournit notamment les opérations
+            <code>getVol(numero)</code>,
+            <code>getTrajet(numero)</code> et
+            <code>getItineraire(numero)</code>.
+
+            Les contrôleurs peuvent ainsi obtenir un voyage à partir de code, sans être
+            responsables de la manière dont les objets sont conservés ou
+            retrouvés. Cela favorise un <b>faible couplage</b>.
+
+            Le même principe est appliqué pour la classe <b>RegistreReservationsActives(réservations non confirmées)</b>
         </li>
 
         <li>
-            Les associations entre <b>Réservation</b> et <b>Siège</b> ou
-            <b>Cabine</b> permettent de représenter la place réservée selon le
-            type de voyage.
+            Des opérations distinctes sont utilisées pour rechercher un
+            <b>Vol</b>, un <b>Trajet</b> ou un <b>Itinéraire</b>, étant donné que les types des paramètres sont différents d'un voyage à
+            l'autre.
+        </li>
+
+    </ol>
+
+
+    <h4>Principes Expert d'Information, cohésion, couplage</h4>
+
+    <ol>
+        <li>
+            La responsabilité de déterminer si une réservation est expirée
+            est attribuée à <b>Reservation</b> par l'opération
+            <code>estExpiree()</code>, car cette dernière possède les informations nécessaires pour le faire.
         </li>
 
         <li>
-            Une <b>Réservation</b> est associée à un <b>Paiement</b> afin de
-            représenter le paiement effectué pour confirmer la réservation.
+            La recherche des sièges disponibles est confiée directement
+            aux classes <b>Vol</b> et <b>Trajet</b> par l'intermédiaire
+            de <code>getSiegesDisponibles(...)</code>.
+
+            Ces classes sont les mieux placées pour réaliser cette opération
+            puisqu'elles connaissent la structure du voyage et les sections
+            qui lui sont associées.
+        </li>
+
+        <li>
+            Lors du paiement d'une réservation de siège,
+            <b>ReservationSiege</b> permet d'identifier le
+            <b>Siege</b> concerné. Le siège permet ensuite d'accéder à sa
+            <b>SectionSieges</b>, laquelle connaît le prix correspondant.
+
+            L'opération <code>getPrix()</code> est donc attribuée à
+            <b>SectionSieges</b>, qui est selon nous la mieux placée pour calculer le prix,
+            étant donné que le prix est défini en fonction des sections.
+        </li>
+
+          <li>
+            Les classes <b>ReservationSiege</b> et
+            <b>ReservationCabine</b> spécialisent <b>Reservation</b>.
+            Les informations communes, notamment le numéro, le statut et
+            les dates de création et d'expiration, sont définies dans la
+            classe générale, tandis que les informations propres au type de
+            réservation sont placées dans les spécialisations.
+
+            Cette organisation évite la duplication et favorise la
+            <b>cohésion</b> des différentes classes.
         </li>
     </ol>
 
-    
+
+    <h4>Principe du Créateur</h4>
+
+    <ol>
+        <li>
+            <b>ControleurReservation</b> coordonne la création d'une
+            réservation après avoir obtenu le voyage concerné et les
+            informations nécessaires à la réservation, car il dispose de l'information requise(obtenue via les classes Voyage) pour initialiser la réservation.
+        </li>
+
+        <li>
+            La date et l'heure de création ainsi que la date et l'heure
+            d'expiration sont conservées dans <b>Reservation</b>.
+            Lors de la création, l'expiration est fixée à vingt-quatre
+            heures après la création de la réservation. Cela permet donc de vérifier facilement si la réservation est expirée.
+
+        </li>
+
+    </ol>
+   
+        <li>
+            Un objet <b>Paiement</b> n'est créé que si la réservation est
+            toujours valide. Le contrôleur  dispose des informations nécessaires pour
+            déclencher la création du paiement, et est donc responsable de cette dernière.
+
+            Si la réservation est expirée, aucun objet
+            <b>Paiement</b> n'est créé et l'interface informe plutôt
+            l'utilisateur de l'expiration de sa réservation(un objet null est retourné à l'interface étant donné que la méthode <code>payer(...)</code> devrait retourner un objet Paiement).
+        </li>
+
+    </ol>
+
+
+    <h3>Diagrammes de séquence</h3>
+
+
+    <h4>Réserver un siège</h4>
+
+   <!-- <img src="reserversiegev3.jpg" alt="Diagramme de séquence - Réserver un siège"> --> 
+
+    <ol>
+        <li>
+
+            La sélection du type de voyage, du type de section et la saisie du numéro de voyage constituent des détails internes à l'interface, qui se charge
+            de transmettre les bonnes informations au contrôleur.
+        </li>
+
+        <li>
+            Un fragment <b>alt</b> distingue le cas d'un
+            <b>Vol</b> de celui d'un <b>Trajet</b>. Cette distinction est
+            nécessaire puisque ces deux types de voyages utilisent des
+            types de sections différents et possèdent donc des opérations distinctes.
+        </li>
+
+        <li>
+            Le <b>ControleurReservation</b> délègue la recherche du voyage
+            au <b>RegistreVoyages</b> à l'aide de
+            <code>getVol(numero)</code> ou
+            <code>getTrajet(numero)</code>. Le contrôleur n'a ainsi pas
+            besoin de connaître la manière dont les voyages sont stockés, et cela permet de récupérer directement un voyage à partir de son numéro.
+        </li>
+
+        <li>
+            Une fois le voyage obtenu, le contrôleur lui demande les sièges
+            disponibles pour la section sélectionnée. Cette responsabilité
+            est attribuée au voyage conformément au principe
+            <b>Information Expert</b> décrit plus haut.
+        </li>
+
+        <li>
+            Une réservation est ensuite créée avec une date d'expiration
+            située vingt-quatre heures après sa création(now() représentant la date et l'heure au moment de la création). L'objet Reservation(on suppose que le numéro associé est généré automatiquement) est finalement retourné à
+            <b>InterfaceClient</b>, qui se charge d'afficher la confirmation au client.
+        </li>
+    </ol>
+
+
+    <h4>Payer une réservation</h4>
+
+    <img src="paiementds.jpg" alt="Diagramme de séquence - Payer une réservation">
+
+    <ol>
+        <li>
+            Lors du paiement, <b>InterfaceClient</b> transmet les
+            informations fournies par le client au
+            <b>ControleurPaiement</b>. Celui-ci obtient la réservation
+            correspondante auprès du
+            <b>RegistreReservationsActives</b>.
+        </li>
+
+        <li>
+            Le contrôleur demande ensuite directement à
+            <b>Reservation</b> si celle-ci est expirée avec
+            <code>estExpiree()</code>. Ce choix applique le principe
+            <b>Information Expert</b> décrit plus haut.
+        </li>
+
+        <li>
+            Le fragment <b>alt</b> représente les deux résultats possibles.
+            Si la réservation est expirée, aucun paiement n'est créé et
+            l'interface affiche un message indiquant l'expiration.
+        </li>
+
+        <li>
+            Si la réservation est toujours valide, le siège associé est
+            obtenu à partir de la réservation. Le siège permet ensuite
+            d'obtenir sa section et la section fournit le prix applicable
+            avec <code>getPrix()</code>.
+
+        </li>
+
+        <li>
+            Une fois la validité de la réservation vérifiée et le prix
+            obtenu, le paiement peut être créé. L'objet
+            <b>Paiement</b> obtenu est ensuite retourné à l'interface,
+            qui affiche la confirmation au client.
+        </li>
+    </ol>
 
 </body>
+
 </html>
