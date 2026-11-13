@@ -385,7 +385,6 @@ figure.diagramme figcaption { margin-top:10px; font-size:18px; font-style:italic
     </p>
 
 <section id="tache-design">
-        <section id="tache-design">
   <h2>Tâche 3 - Révision du design logiciel du système de réservation</h2>
 
   <p>Nous avons révisé le design du devoir 1 pour le rendre plus modulaire et plus réutilisable. Le système est maintenant découpé en couches : la présentation (<em>VueClient</em>, <em>VueAdministrateur</em>), l'application (les contrôleurs et les objets de données échangés avec la vue), le domaine du transport (cinq paquets), les modules communs et l'infrastructure (le stockage en mémoire et la communication avec la banque). Les dépendances vont toujours de la présentation vers l'application, puis vers le domaine, puis vers les modules communs. Cette section identifie les modules à usage général et les modules réutilisables. La justification des choix de design se trouve à la tâche 4.</p>
@@ -483,8 +482,6 @@ figure.diagramme figcaption { margin-top:10px; font-size:18px; font-style:italic
   <p><strong>Problème.</strong> Dans le devoir 1, la même règle était écrite une fois par type de transport (par exemple, l'absence de chevauchement des voyages d'un véhicule). La condition « la réservation est active » était recopiée dans plusieurs contraintes, l'invariant <em>FormatCode</em> d'<em>Exploitant</em> énumérait les sous-classes, et rien n'obligeait la place réservée à appartenir au véhicule du voyage.</p>
 
   <p><strong>Solution et principes.</strong> Nous avons écrit chaque règle une seule fois, dans la classe la plus générale possible. Grâce à <strong>getVehicule()</strong> et <strong>getExploitant()</strong>, l'absence de chevauchement et la cohérence entre le véhicule et l'exploitant deviennent un seul invariant dans <em>Voyage</em>, qui s'applique à tout nouveau type de voyage (OCP). Les conditions répétées sont définies une seule fois comme des requêtes (<strong>estActive(t)</strong>, <strong>estPayable(t)</strong>), puis réutilisées. Les trois contraîntes de réservation sont fusionnés en un seul. <em>FormatCode</em> est déplacé dans chaque sous-classe, pour que la classe mère ne connaisse plus ses sous-classes (OCP). Nous avons aussi ajouté l'invariant <em>PlaceDuVoyage</em>, qui garantit que la place réservée appartient au véhicule du voyage. Enfin, les contrats du module de paiement ne parlent ni de voyage ni de siège, et restent donc valables si le module est réutilisé ailleurs.</p>
-</section>
-
 </section>
 </body>
 </html>
