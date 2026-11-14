@@ -1,0 +1,17 @@
+GeneratorModel for create::java {
+    statechart microwave {
+        feature Outlet {
+            targetProject = "Microwave"
+            targetFolder = "src-gen"
+            libraryTargetFolder = "src-gen"
+        }
+        feature Naming {
+            basePackage = "microwave.generated"
+            typeName = "MicrowaveBehavior"
+        }
+        feature GeneralFeatures {
+            TimerService = true
+            synchronized = true
+        }
+    }
+}
