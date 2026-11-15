@@ -374,7 +374,9 @@ figure.diagramme figcaption { margin-top:10px; font-size:18px; font-style:italic
         Stop mène à Init depuis tous les états, ou à IdleOpen si la porte est ouverte.
         Comme <code>displayTime(t)</code> affiche <code>t / 100</code> minutes et <code>t % 100</code> secondes,
         le temps est converti avant l'affichage avec <code>(time / 60) * 100 + time % 60</code>.
-    </p><h3>
+    </p>
+        <p> De plus, nous avons pris pour hypothèse qu'après les 5 secondes de beep du microondes, si l'utilisateur ne l'ouvre pas, il retourne quand même à l'affichage initial(ce qui correspond au fonctionnement de nos microondes).</p>
+        <h3>
         Compatibilité</h3><p>
         Le projet fourni a été généré avec YAKINDU 3.5.9. Itemis CREATE 5.6.3 génère une API Java
         différente : avec la configuration d'origine, le projet ne compile pas et l'application utilise
