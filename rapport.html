@@ -580,9 +580,323 @@ figure.diagramme figcaption { margin-top:10px; font-size:18px; font-style:italic
   <h3>3.3 Modules propres au système de réservation</h3>
 
   <p>Les paquets <em>Voyages</em>, <em>Reservations</em>, <em>Controleurs</em>, <em>UI</em> et <em>Infrastructure</em> ne sont pas réutilisables. Ils décrivent les cas d'utilisation de ce système (rechercher, réserver, payer, administrer) et ses choix techniques. Ce sont ceux qui changeront le plus souvent. Aucun module réutilisable ne dépend d'eux, donc ces changements ne touchent pas les modules réutilisables.</p>
+<section id="contraintes-ocl">
+<h3>3.4 Contraintes OCL révisées</h3>
+
+<h4>3.4.1 Volet administratif</h4>
+
+<p><strong>Codes des lieux de transport (inchangés).</strong> Un aéroport, un port ou une gare est identifié par un code de trois lettres, unique parmi les lieux du même type.</p>
+<pre style="border: 1px solid #555; background-color: #fafafa; padding: 14px 18px; font-size: 16px; line-height: 1.45; overflow-x: auto; white-space: pre;"><code style="background: none; padding: 0; font-size: 16px;">context LieuTransport
+
+inv CodeTroisLettres:
+    self.code.size() = 3
+    and
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        .indexOf(self.code.substring(1,1).toUpperCase()) &gt; 0
+    and
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        .indexOf(self.code.substring(2,2).toUpperCase()) &gt; 0
+    and
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        .indexOf(self.code.substring(3,3).toUpperCase()) &gt; 0
+
+inv CodeUniqueParType:
+    LieuTransport.allInstances()-&gt;forAll(l |
+        (l &lt;&gt; self and l.oclType() = self.oclType())
+        implies
+        l.code &lt;&gt; self.code
+    )</code></pre>
+
+<p><strong>Codes des exploitants (modifiés).</strong> La règle de format est déplacée dans chaque sous-classe afin de supprimer le if-else de la contrainte OCL (OCP).</p>
+<pre style="border: 1px solid #555; background-color: #fafafa; padding: 14px 18px; font-size: 16px; line-height: 1.45; overflow-x: auto; white-space: pre;"><code style="background: none; padding: 0; font-size: 16px;">context CompagnieAerienne
+
+inv FormatCode:
+    self.code.size() = 2
+    and
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        .indexOf(self.code.substring(1,1).toUpperCase()) &gt; 0
+    and
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        .indexOf(self.code.substring(2,2).toUpperCase()) &gt; 0
+
+context LigneTrain
+
+inv FormatCode:
+    self.code.size() &gt;= 1 and self.code.size() &lt; 6
+
+context CompagnieCroisiere
+
+inv FormatCode:
+    self.code.size() &gt;= 1 and self.code.size() &lt; 6
+
+context Exploitant
+
+inv CodeUniqueParType:
+    Exploitant.allInstances()-&gt;forAll(e |
+        (e &lt;&gt; self and e.oclType() = self.oclType())
+        implies
+        e.code &lt;&gt; self.code
+    )</code></pre>
+
+<p><strong>Véhicule appartenant au bon exploitant (fusionnée).</strong> Remplace AvionDeLaCompagnie, TrainDeLaLigne et PaquebotDeLaCompagnie.</p>
+<pre style="border: 1px solid #555; background-color: #fafafa; padding: 14px 18px; font-size: 16px; line-height: 1.45; overflow-x: auto; white-space: pre;"><code style="background: none; padding: 0; font-size: 16px;">context Voyage
+
+inv VehiculeExploitant:
+    self.getVehicule().getExploitant() = self.getExploitant()</code></pre>
+
+<p><strong>Absence de chevauchement des voyages (fusionnée).</strong> Remplace VolsNonChevauchants, TrajetsNonChevauchants et ItinerairesNonChevauchants.</p>
+<pre style="border: 1px solid #555; background-color: #fafafa; padding: 14px 18px; font-size: 16px; line-height: 1.45; overflow-x: auto; white-space: pre;"><code style="background: none; padding: 0; font-size: 16px;">context Voyage
+
+inv AbsenceChevauchement:
+    Voyage.allInstances()-&gt;forAll(v |
+        (v &lt;&gt; self and v.getVehicule() = self.getVehicule())
+        implies
+        (
+            v.dateHeureArrivee &lt;= self.dateHeureDepart
+            or
+            self.dateHeureArrivee &lt;= v.dateHeureDepart
+        )
+    )</code></pre>
+
+<p><strong>Identifiant d'un vol.</strong></p>
+<pre style="border: 1px solid #555; background-color: #fafafa; padding: 14px 18px; font-size: 16px; line-height: 1.45; overflow-x: auto; white-space: pre;"><code style="background: none; padding: 0; font-size: 16px;">context Vol
+
+inv FormatNumeroVol:
+    self.numero.size() = 6
+    and
+    self.numero.substring(1,2) = self.compagnie.code
+    and
+    '0123456789'.indexOf(self.numero.substring(3,3)) &gt; 0
+    and
+    '0123456789'.indexOf(self.numero.substring(4,4)) &gt; 0
+    and
+    '0123456789'.indexOf(self.numero.substring(5,5)) &gt; 0
+    and
+    '0123456789'.indexOf(self.numero.substring(6,6)) &gt; 0</code></pre>
+
+<p>L'unicité est écrite une seule fois dans Voyage (remplace NumeroVolUnique). Elle s'applique à tous les voyages, tous types confondus (voir les hypothèses du rapport).</p>
+<pre style="border: 1px solid #555; background-color: #fafafa; padding: 14px 18px; font-size: 16px; line-height: 1.45; overflow-x: auto; white-space: pre;"><code style="background: none; padding: 0; font-size: 16px;">context Voyage
+
+inv NumeroUnique:
+    Voyage.allInstances()-&gt;forAll(v |
+        v &lt;&gt; self implies v.numero &lt;&gt; self.numero
+    )</code></pre>
+
+<p><strong>Sections d'un avion (modifiées).</strong></p>
+<pre style="border: 1px solid #555; background-color: #fafafa; padding: 14px 18px; font-size: 16px; line-height: 1.45; overflow-x: auto; white-space: pre;"><code style="background: none; padding: 0; font-size: 16px;">context Avion
+
+inv SectionsUniques:
+    self.sections-&gt;isUnique(s | s.type)
+
+inv SectionEconomiqueObligatoire:
+    self.sections-&gt;exists(s |
+        s.type = TypeSectionAvion::ECONOMIQUE
+    )</code></pre>
+
+<p><strong>Disposition des sections (ajoutées).</strong> La valeur AUCUNE de Disposition est réservée aux sections de paquebot, qui contiennent des cabines et non des sièges (voir les hypothèses du rapport). Une section de sièges (avion ou train) a donc toujours une vraie disposition, et la configuration d'une section utilise AUCUNE si et seulement si son type est un type de section de paquebot.</p>
+<pre style="border: 1px solid #555; background-color: #fafafa; padding: 14px 18px; font-size: 16px; line-height: 1.45; overflow-x: auto; white-space: pre;"><code style="background: none; padding: 0; font-size: 16px;">context SectionSieges
+
+inv DispositionDefinie:
+    self.disposition &lt;&gt; Disposition::AUCUNE
+
+context ConfigurationSection
+
+inv DispositionSelonType:
+    if self.type.oclIsKindOf(TypeSectionPaquebot) then
+        self.disposition = Disposition::AUCUNE
+    else
+        self.disposition &lt;&gt; Disposition::AUCUNE
+    endif</code></pre>
+
+<p><strong>Prix d'une place (ajoutée).</strong> prix est un attribut dérivé de Place (/prix) : toutes les places d'une section ont le prix de la section.</p>
+<pre style="border: 1px solid #555; background-color: #fafafa; padding: 14px 18px; font-size: 16px; line-height: 1.45; overflow-x: auto; white-space: pre;"><code style="background: none; padding: 0; font-size: 16px;">context Place::prix : Decimal
+derive: self.getSection().getPrix()</code></pre>
+
+<p><strong>Durée d'un itinéraire (modifiée).</strong> getDuree() retourne une durée en minutes (voir les hypothèses du rapport) ; 14 jours valent 14 × 24 × 60 minutes.</p>
+<pre style="border: 1px solid #555; background-color: #fafafa; padding: 14px 18px; font-size: 16px; line-height: 1.45; overflow-x: auto; white-space: pre;"><code style="background: none; padding: 0; font-size: 16px;">context Itineraire
+
+inv DureeMaximum:
+    self.getDuree() &lt;= 14 * 24 * 60</code></pre>
+
+<p><strong>Ports d'un itinéraire (inchangés).</strong></p>
+<pre style="border: 1px solid #555; background-color: #fafafa; padding: 14px 18px; font-size: 16px; line-height: 1.45; overflow-x: auto; white-space: pre;"><code style="background: none; padding: 0; font-size: 16px;">context Itineraire
+
+inv AuMoinsTroisPortsDistincts:
+    self.escalePortuaire.port-&gt;asSet()-&gt;size() &gt;= 3
+
+inv OrdreEscalesUnique:
+    self.escalePortuaire-&gt;isUnique(e | e.ordre)
+
+inv MemePortDepartEtArrivee:
+    self.escalePortuaire-&gt;sortedBy(e | e.ordre)-&gt;first().port
+    =
+    self.escalePortuaire-&gt;sortedBy(e | e.ordre)-&gt;last().port</code></pre>
+
+<p><strong>Gares d'un trajet (modifiée).</strong> L'ancienne contrainte comparait self.gare-&gt;size() à self.gare-&gt;asSet()-&gt;size(). Or la navigation d'une association retourne déjà un Set, sans doublons : la contrainte était toujours vraie. Le design utilise maintenant la classe ArretGare (attribut ordre), sur le modèle de EscalePortuaire. La multiplicité 2..* de l'association Trajet–ArretGare impose au moins deux arrêts ; avec GaresDistinctes, ces arrêts correspondent à au moins deux gares différentes.</p>
+<pre style="border: 1px solid #555; background-color: #fafafa; padding: 14px 18px; font-size: 16px; line-height: 1.45; overflow-x: auto; white-space: pre;"><code style="background: none; padding: 0; font-size: 16px;">context Trajet
+
+inv GaresDistinctes:
+    self.arretGare-&gt;isUnique(a | a.gare)
+
+inv OrdreArretsUnique:
+    self.arretGare-&gt;isUnique(a | a.ordre)</code></pre>
+
+<h4>3.4.2 Volet client</h4>
+
+<p><strong>Détails supplémentaires sur les réservations (ajoutées).</strong> PlaceDuVoyage : la place réservée appartient au véhicule du voyage. PreferenceRespectee : la place réservée respecte la priorité demandée (priorité stricte, voir les hypothèses du rapport). PreferenceCabine : une cabine ne propose pas de priorité aile/fenêtre, donc une réservation de cabine utilise AUCUNE.</p>
+<pre style="border: 1px solid #555; background-color: #fafafa; padding: 14px 18px; font-size: 16px; line-height: 1.45; overflow-x: auto; white-space: pre;"><code style="background: none; padding: 0; font-size: 16px;">context Reservation
+
+inv PlaceDuVoyage:
+    self.voyage.getVehicule().getSections()-&gt;includes(self.place.getSection())
+
+inv PreferenceRespectee:
+    self.place.correspondA(self.preference)
+
+inv PreferenceCabine:
+    self.place.oclIsKindOf(Cabine) implies self.preference = Priorite::AUCUNE</code></pre>
+
+<p><strong>Réservations confirmées d'un passager (inchangée).</strong></p>
+<pre style="border: 1px solid #555; background-color: #fafafa; padding: 14px 18px; font-size: 16px; line-height: 1.45; overflow-x: auto; white-space: pre;"><code style="background: none; padding: 0; font-size: 16px;">context Passager
+
+inv UneReservationConfirmeeParVoyage:
+    self.reservation
+        -&gt;select(r | r.statut = StatutReservation::CONFIRMEE)
+        -&gt;isUnique(r | r.voyage)</code></pre>
+
+<p><strong>Identité d'un passager (ajoutée).</strong> Une même personne correspond à un seul objet Passager, identifié par son numéro de passeport. Sans cette règle, deux objets Passager pour la même personne permettraient de contourner UneReservationConfirmeeParVoyage.</p>
+<pre style="border: 1px solid #555; background-color: #fafafa; padding: 14px 18px; font-size: 16px; line-height: 1.45; overflow-x: auto; white-space: pre;"><code style="background: none; padding: 0; font-size: 16px;">context Passager
+
+inv NumeroPasseportUnique:
+    Passager.allInstances()-&gt;forAll(p |
+        p &lt;&gt; self implies p.numeroPasseport &lt;&gt; self.numeroPasseport
+    )</code></pre>
+
+<p><strong>Réservation d'une place (fusionnée).</strong> Une seule opération pour les sièges et les cabines. La précondition exige une place libre qui correspond à la priorité demandée ; pour un itinéraire (cabines), seule la priorité AUCUNE est possible (voir les hypothèses du rapport). Les postconditions désignent la réservation créée par son numéro, retourné dans result, et retrouvée dans le registre des réservations. Elles garantissent que cette réservation est nouvelle et que sa place était libre avant l'appel.</p>
+<pre style="border: 1px solid #555; background-color: #fafafa; padding: 14px 18px; font-size: 16px; line-height: 1.45; overflow-x: auto; white-space: pre;"><code style="background: none; padding: 0; font-size: 16px;">context ControleurReservation::reserver(
+    numeroVoyage : String,
+    typeSection : String,
+    preference : Priorite
+) : DetailsReservation
+
+pre VoyageEtPlaceDisponibles:
+    let v = self.catalogue.trouver(numeroVoyage) in
+    v &lt;&gt; null
+    and
+    v.trouverTypeSection(typeSection) &lt;&gt; null
+    and
+    (v.oclIsKindOf(Itineraire) implies preference = Priorite::AUCUNE)
+    and
+    self.disponibilite
+        .getPlacesDisponibles(v, v.trouverTypeSection(typeSection),
+                              self.maintenant())
+        -&gt;exists(p | p.correspondA(preference))
+
+post NouvelleReservation:
+    let r = self.reservations.trouver(result.numeroReservation) in
+    r &lt;&gt; null
+    and
+    r.oclIsNew()
+    and
+    self.reservations.trouver@pre(result.numeroReservation) = null
+    and
+    r.voyage.numero = numeroVoyage
+    and
+    r.statut = StatutReservation::RESERVEE
+    and
+    r.preference = preference
+    and
+    r.passager = null
+
+post PlaceLibreDeLaBonneSection:
+    let r = self.reservations.trouver(result.numeroReservation) in
+    r.place.getSection().getType() = r.voyage.trouverTypeSection(typeSection)
+    and
+    self.disponibilite
+        .getPlacesDisponibles@pre(r.voyage,
+                                  r.voyage.trouverTypeSection(typeSection),
+                                  self.maintenant@pre())
+        -&gt;includes(r.place)
+
+post PlaceNonDoublementReservee:
+    let r = self.reservations.trouver(result.numeroReservation) in
+    r.estActive(self.maintenant())
+    and
+    Reservation.allInstances()
+        -&gt;select(a |
+            a.voyage = r.voyage
+            and a.place = r.place
+            and a.estActive(self.maintenant())
+        )
+        -&gt;size() = 1</code></pre>
+
+<p><strong>Paiement d'une réservation (modifiée).</strong> La réservation est retrouvée dans le registre des réservations. La précondition empêche aussi une deuxième réservation confirmée pour le même passager (identifié par son numéro de passeport) et le même voyage ; c'est la condition que calcule RegistreReservations::existeConfirmee, appelée avant le débit de la carte dans le diagramme de séquence du paiement. Les postconditions portent sur la réservation trouvée avant l'appel (@pre) et ne s'appliquent que si le paiement est accepté, c'est-à-dire si un reçu est retourné (voir les hypothèses du rapport).</p>
+<pre style="border: 1px solid #555; background-color: #fafafa; padding: 14px 18px; font-size: 16px; line-height: 1.45; overflow-x: auto; white-space: pre;"><code style="background: none; padding: 0; font-size: 16px;">context ControleurPaiement::payer(demande : InfosPaiement) : RecuPaiement
+
+pre ReservationPayable:
+    let r = self.reservations.trouver(demande.numeroReservation) in
+    r &lt;&gt; null
+    and
+    r.estPayable(self.maintenant())
+    and
+    not Reservation.allInstances()-&gt;exists(a |
+        a.statut = StatutReservation::CONFIRMEE
+        and a.voyage = r.voyage
+        and a.passager &lt;&gt; null
+        and a.passager.numeroPasseport = demande.numeroPasseport
+    )
+
+post ReservationConfirmee:
+    let r = self.reservations.trouver@pre(demande.numeroReservation) in
+    result &lt;&gt; null implies
+    (
+        self.reservations.trouver(demande.numeroReservation) = r
+        and
+        r.statut = StatutReservation::CONFIRMEE
+    )
+
+post PassagerAssocie:
+    let r = self.reservations.trouver@pre(demande.numeroReservation) in
+    result &lt;&gt; null implies
+    (
+        r.passager &lt;&gt; null
+        and r.passager.noms = demande.noms
+        and r.passager.courriel = demande.courriel
+        and r.passager.numeroPasseport = demande.numeroPasseport
+    )
+
+post PaiementAssocie:
+    let r = self.reservations.trouver@pre(demande.numeroReservation) in
+    result &lt;&gt; null implies
+    (
+        r.paiement &lt;&gt; null
+        and result.montant = r.paiement.montant
+        and result.numeroReservation = demande.numeroReservation
+    )</code></pre>
+
+<p><strong>Module de paiement réutilisable (ajoutée).</strong> ServicePaiement ne dépend que de l'interface ElementAPayer : il peut être réutilisé pour payer autre chose qu'une réservation.</p>
+<pre style="border: 1px solid #555; background-color: #fafafa; padding: 14px 18px; font-size: 16px; line-height: 1.45; overflow-x: auto; white-space: pre;"><code style="background: none; padding: 0; font-size: 16px;">context ServicePaiement::payer(
+    element : ElementAPayer,
+    carte : String,
+    t : DateTime
+) : Paiement
+
+pre ElementPayable:
+    element.estPayable(t)
+
+post MontantPaye:
+    result &lt;&gt; null implies
+    result.montant = element.getMontantAPayer@pre()
+
+post PlusPayable:
+    result &lt;&gt; null implies
+    not element.estPayable(t)</code></pre>
+
 </section>
+</section>
+        
 
 <section id="tache-qualite">
+        
 <h2>Tâche 4 - Qualité du design révisé</h2>
 
 <h3>4.1 Modules à usage général et réutilisables</h3>
