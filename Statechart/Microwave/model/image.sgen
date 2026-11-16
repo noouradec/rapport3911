@@ -1,0 +1,11 @@
+GeneratorModel for create::images {
+    statechart microwave {
+        feature Outlet {
+            targetProject = "Microwave"
+            targetFolder = "diagram"
+        }
+        feature Renderer {
+            format = "png"
+        }
+    }
+}

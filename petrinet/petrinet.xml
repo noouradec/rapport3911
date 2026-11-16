@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="ISO-8859-1"?><pnml>
+    <net id="Net-One" type="P/T net">
+        <token id="Default" enabled="true" red="0" green="0" blue="0"/>
+        <place id="AutorisationMontreal">
+            <graphics>
+                <position x="180.0" y="540.0"/>
+            </graphics>
+            <name>
+                <value>AutorisationMontreal</value>
+                <graphics>
+                    <offset x="-1.666666666666667" y="1.666666666666666"/>
+                </graphics>
+            </name>
+            <initialMarking>
+                <value>Default,1</value>
+                <graphics>
+                    <offset x="0.0" y="0.0"/>
+                </graphics>
+            </initialMarking>
+            <capacity>
+                <value>0</value>
+            </capacity>
+        </place>
+        <place id="AutorisationRiveSud">
+            <graphics>
+                <position x="540.0" y="540.0"/>
+            </graphics>
+            <name>
+                <value>AutorisationRiveSud</value>
+                <graphics>
+                    <offset x="0.0" y="0.0"/>
+                </graphics>
+            </name>
+            <initialMarking>
+                <value>Default,0</value>
+                <graphics>
+                    <offset x="0.0" y="0.0"/>
+                </graphics>
+            </initialMarking>
+            <capacity>
+                <value>0</value>
+            </capacity>
+        </place>
+        <place id="EntreeDeMontreal">
+            <graphics>
+                <position x="150.0" y="180.0"/>
+            </graphics>
+            <name>
+                <value>EntreeDeMontreal</value>
+                <graphics>
+                    <offset x="0.0" y="0.0"/>
+                </graphics>
+            </name>
+            <initialMarking>
+                <value>Default,1</value>
+                <graphics>
+                    <offset x="0.0" y="0.0"/>
+                </graphics>
+            </initialMarking>
+            <capacity>
+                <value>0</value>
+            </capacity>
+        </place>
+        <place id="EntreeDeRiveSud">
+            <graphics>
+                <position x="135.0" y="435.0"/>
+            </graphics>
+            <name>
+                <value>EntreeDeRiveSud</value>
+                <graphics>
+                    <offset x="-1.142857142857146" y="2.1964285714285694"/>
+                </graphics>
+            </name>
+            <initialMarking>
+                <value>Default,1</value>
+                <graphics>
+                    <offset x="0.0" y="0.0"/>
+                </graphics>
+            </initialMarking>
+            <capacity>
+                <value>0</value>
+            </capacity>
+        </place>
+        <place id="TunnelLibre">
+            <graphics>
+                <position x="375.0" y="315.0"/>
+            </graphics>
+            <name>
+                <value>TunnelLibre</value>
+                <graphics>
+                    <offset x="-12.0" y="0.0"/>
+                </graphics>
+            </name>
+            <initialMarking>
+                <value>Default,1</value>
+                <graphics>
+                    <offset x="0.0" y="0.0"/>
+                </graphics>
+            </initialMarking>
+            <capacity>
+                <value>0</value>
+            </capacity>
+        </place>
+        <place id="TunnelVersMontreal">
+            <graphics>
+                <position x="465.0" y="450.0"/>
+            </graphics>
+            <name>
+                <value>TunnelVersMontreal</value>
+                <graphics>
+                    <offset x="66.59722222222223" y="-1.5972222222222228"/>
+                </graphics>
+            </name>
+            <initialMarking>
+                <value>Default,0</value>
+                <graphics>
+                    <offset x="0.0" y="0.0"/>
+                </graphics>
+            </initialMarking>
+            <capacity>
+                <value>0</value>
+            </capacity>
+        </place>
+        <place id="TunnelVersRiveSud">
+            <graphics>
+                <position x="435.0" y="180.0"/>
+            </graphics>
+            <name>
+                <value>TunnelVersRiveSud</value>
+                <graphics>
+                    <offset x="64.93055555555557" y="-9.23611111111111"/>
+                </graphics>
+            </name>
+            <initialMarking>
+                <value>Default,0</value>
+                <graphics>
+                    <offset x="0.0" y="0.0"/>
+                </graphics>
+            </initialMarking>
+            <capacity>
+                <value>0</value>
+            </capacity>
+        </place>
+        <transition id="EntrerDeMontreal">
+            <graphics>
+                <position x="285.0" y="180.0"/>
+            </graphics>
+            <name>
+                <value>EntrerDeMontreal</value>
+                <graphics>
+                    <offset x="82.0" y="-15.5"/>
+                </graphics>
+            </name>
+            <orientation>
+                <value>0</value>
+            </orientation>
+            <rate>
+                <value>1.0</value>
+            </rate>
+            <timed>
+                <value>false</value>
+            </timed>
+            <infiniteServer>
+                <value>false</value>
+            </infiniteServer>
+            <priority>
+                <value>1</value>
+            </priority>
+        </transition>
+        <transition id="EntrerDeRiveSud">
+            <graphics>
+                <position x="285.0" y="435.0"/>
+            </graphics>
+            <name>
+                <value>EntrerDeRiveSud</value>
+                <graphics>
+                    <offset x="9.291666666666666" y="-3.4166666666666665"/>
+                </graphics>
+            </name>
+            <orientation>
+                <value>0</value>
+            </orientation>
+            <rate>
+                <value>1.0</value>
+            </rate>
+            <timed>
+                <value>false</value>
+            </timed>
+            <infiniteServer>
+                <value>false</value>
+            </infiniteServer>
+            <priority>
+                <value>1</value>
+            </priority>
+        </transition>
+        <transition id="SortirCoteMontreal">
+            <graphics>
+                <position x="675.0" y="450.0"/>
+            </graphics>
+            <name>
+                <value>SortirCoteMontreal</value>
+                <graphics>
+                    <offset x="14.125" y="-7.625"/>
+                </graphics>
+            </name>
+            <orientation>
+                <value>0</value>
+            </orientation>
+            <rate>
+                <value>1.0</value>
+            </rate>
+            <timed>
+                <value>false</value>
+            </timed>
+            <infiniteServer>
+                <value>false</value>
+            </infiniteServer>
+            <priority>
+                <value>1</value>
+            </priority>
+        </transition>
+        <transition id="SortirCoteRiveSud">
+            <graphics>
+                <position x="675.0" y="180.0"/>
+            </graphics>
+            <name>
+                <value>SortirCoteRiveSud</value>
+                <graphics>
+                    <offset x="2.0" y="3.0"/>
+                </graphics>
+            </name>
+            <orientation>
+                <value>0</value>
+            </orientation>
+            <rate>
+                <value>1.0</value>
+            </rate>
+            <timed>
+                <value>false</value>
+            </timed>
+            <infiniteServer>
+                <value>false</value>
+            </infiniteServer>
+            <priority>
+                <value>1</value>
+            </priority>
+        </transition>
+        <arc id="AutorisationMontreal to EntrerDeMontreal" source="AutorisationMontreal" target="EntrerDeMontreal">
+            <graphics/>
+            <inscription>
+                <value>Default,1</value>
+                <graphics/>
+            </inscription>
+            <tagged>
+                <value>false</value>
+            </tagged>
+            <arcpath id="000" x="175" y="551" curvePoint="false"/>
+            <arcpath id="001" x="176" y="552" curvePoint="false"/>
+            <arcpath id="002" x="26" y="552" curvePoint="false"/>
+            <arcpath id="003" x="26" y="146" curvePoint="false"/>
+            <arcpath id="004" x="266" y="146" curvePoint="false"/>
+            <arcpath id="005" x="291" y="186" curvePoint="false"/>
+            <type value="normal"/>
+        </arc>
+        <arc id="AutorisationRiveSud to EntrerDeRiveSud" source="AutorisationRiveSud" target="EntrerDeRiveSud">
+            <graphics/>
+            <inscription>
+                <value>Default,1</value>
+                <graphics/>
+            </inscription>
+            <tagged>
+                <value>false</value>
+            </tagged>
+            <arcpath id="000" x="551" y="535" curvePoint="false"/>
+            <arcpath id="001" x="552" y="492" curvePoint="false"/>
+            <arcpath id="002" x="296" y="492" curvePoint="false"/>
+            <arcpath id="003" x="295" y="461" curvePoint="false"/>
+            <type value="normal"/>
+        </arc>
+        <arc id="EntreeDeMontreal to EntrerDeMontreal" source="EntreeDeMontreal" target="EntrerDeMontreal">
+            <graphics/>
+            <inscription>
+                <value>Default,1</value>
+                <graphics/>
+            </inscription>
+            <tagged>
+                <value>false</value>
+            </tagged>
+            <arcpath id="000" x="175" y="191" curvePoint="false"/>
+            <arcpath id="001" x="290" y="196" curvePoint="false"/>
+            <type value="normal"/>
+        </arc>
+        <arc id="EntreeDeRiveSud to EntrerDeRiveSud" source="EntreeDeRiveSud" target="EntrerDeRiveSud">
+            <graphics/>
+            <inscription>
+                <value>Default,1</value>
+                <graphics/>
+            </inscription>
+            <tagged>
+                <value>false</value>
+            </tagged>
+            <arcpath id="000" x="160" y="445" curvePoint="false"/>
+            <arcpath id="001" x="290" y="446" curvePoint="false"/>
+            <type value="normal"/>
+        </arc>
+        <arc id="EntrerDeMontreal to EntreeDeMontreal" source="EntrerDeMontreal" target="EntreeDeMontreal">
+            <graphics/>
+            <inscription>
+                <value>Default,1</value>
+                <graphics/>
+            </inscription>
+            <tagged>
+                <value>false</value>
+            </tagged>
+            <arcpath id="000" x="296" y="175" curvePoint="false"/>
+            <arcpath id="001" x="296" y="176" curvePoint="false"/>
+            <arcpath id="002" x="296" y="102" curvePoint="false"/>
+            <arcpath id="003" x="162" y="102" curvePoint="false"/>
+            <arcpath id="004" x="161" y="175" curvePoint="false"/>
+            <type value="normal"/>
+        </arc>
+        <arc id="EntrerDeMontreal to TunnelVersRiveSud" source="EntrerDeMontreal" target="TunnelVersRiveSud">
+            <graphics/>
+            <inscription>
+                <value>Default,1</value>
+                <graphics/>
+            </inscription>
+            <tagged>
+                <value>false</value>
+            </tagged>
+            <arcpath id="000" x="301" y="185" curvePoint="false"/>
+            <arcpath id="001" x="431" y="190" curvePoint="false"/>
+            <type value="normal"/>
+        </arc>
+        <arc id="EntrerDeRiveSud to EntreeDeRiveSud" source="EntrerDeRiveSud" target="EntreeDeRiveSud">
+            <graphics/>
+            <inscription>
+                <value>Default,1</value>
+                <graphics/>
+            </inscription>
+            <tagged>
+                <value>false</value>
+            </tagged>
+            <arcpath id="000" x="296" y="431" curvePoint="false"/>
+            <arcpath id="001" x="296" y="402" curvePoint="false"/>
+            <arcpath id="002" x="146" y="402" curvePoint="false"/>
+            <arcpath id="003" x="145" y="431" curvePoint="false"/>
+            <type value="normal"/>
+        </arc>
+        <arc id="EntrerDeRiveSud to TunnelVersMontreal" source="EntrerDeRiveSud" target="TunnelVersMontreal">
+            <graphics/>
+            <inscription>
+                <value>Default,1</value>
+                <graphics/>
+            </inscription>
+            <tagged>
+                <value>false</value>
+            </tagged>
+            <arcpath id="000" x="295" y="461" curvePoint="false"/>
+            <arcpath id="001" x="296" y="456" curvePoint="false"/>
+            <arcpath id="002" x="461" y="460" curvePoint="false"/>
+            <type value="normal"/>
+        </arc>
+        <arc id="SortirCoteMontreal to AutorisationMontreal" source="SortirCoteMontreal" target="AutorisationMontreal">
+            <graphics/>
+            <inscription>
+                <value>Default,1</value>
+                <graphics/>
+            </inscription>
+            <tagged>
+                <value>false</value>
+            </tagged>
+            <arcpath id="000" x="685" y="475" curvePoint="false"/>
+            <arcpath id="001" x="686" y="506" curvePoint="false"/>
+            <arcpath id="002" x="192" y="506" curvePoint="false"/>
+            <arcpath id="003" x="191" y="535" curvePoint="false"/>
+            <type value="normal"/>
+        </arc>
+        <arc id="SortirCoteMontreal to TunnelLibre" source="SortirCoteMontreal" target="TunnelLibre">
+            <graphics/>
+            <inscription>
+                <value>Default,1</value>
+                <graphics/>
+            </inscription>
+            <tagged>
+                <value>false</value>
+            </tagged>
+            <arcpath id="000" x="686" y="445" curvePoint="false"/>
+            <arcpath id="001" x="686" y="416" curvePoint="false"/>
+            <arcpath id="002" x="400" y="330" curvePoint="false"/>
+            <type value="normal"/>
+        </arc>
+        <arc id="SortirCoteRiveSud to AutorisationRiveSud" source="SortirCoteRiveSud" target="AutorisationRiveSud">
+            <graphics/>
+            <inscription>
+                <value>Default,1</value>
+                <graphics/>
+            </inscription>
+            <tagged>
+                <value>false</value>
+            </tagged>
+            <arcpath id="000" x="690" y="191" curvePoint="false"/>
+            <arcpath id="001" x="792" y="192" curvePoint="false"/>
+            <arcpath id="002" x="792" y="552" curvePoint="false"/>
+            <arcpath id="003" x="565" y="551" curvePoint="false"/>
+            <type value="normal"/>
+        </arc>
+        <arc id="SortirCoteRiveSud to TunnelLibre" source="SortirCoteRiveSud" target="TunnelLibre">
+            <graphics/>
+            <inscription>
+                <value>Default,1</value>
+                <graphics/>
+            </inscription>
+            <tagged>
+                <value>false</value>
+            </tagged>
+            <arcpath id="000" x="685" y="205" curvePoint="false"/>
+            <arcpath id="001" x="686" y="252" curvePoint="false"/>
+            <arcpath id="002" x="400" y="322" curvePoint="false"/>
+            <type value="normal"/>
+        </arc>
+        <arc id="TunnelLibre to EntrerDeMontreal" source="TunnelLibre" target="EntrerDeMontreal">
+            <graphics/>
+            <inscription>
+                <value>Default,1</value>
+                <graphics/>
+            </inscription>
+            <tagged>
+                <value>false</value>
+            </tagged>
+            <arcpath id="000" x="386" y="311" curvePoint="false"/>
+            <arcpath id="001" x="386" y="312" curvePoint="false"/>
+            <arcpath id="002" x="300" y="195" curvePoint="false"/>
+            <type value="normal"/>
+        </arc>
+        <arc id="TunnelLibre to EntrerDeRiveSud" source="TunnelLibre" target="EntrerDeRiveSud">
+            <graphics/>
+            <inscription>
+                <value>Default,1</value>
+                <graphics/>
+            </inscription>
+            <tagged>
+                <value>false</value>
+            </tagged>
+            <arcpath id="000" x="376" y="337" curvePoint="false"/>
+            <arcpath id="001" x="300" y="445" curvePoint="false"/>
+            <type value="normal"/>
+        </arc>
+        <arc id="TunnelVersMontreal to SortirCoteMontreal" source="TunnelVersMontreal" target="SortirCoteMontreal">
+            <graphics/>
+            <inscription>
+                <value>Default,1</value>
+                <graphics/>
+            </inscription>
+            <tagged>
+                <value>false</value>
+            </tagged>
+            <arcpath id="000" x="491" y="461" curvePoint="false"/>
+            <arcpath id="001" x="680" y="461" curvePoint="false"/>
+            <type value="normal"/>
+        </arc>
+        <arc id="TunnelVersRiveSud to SortirCoteRiveSud" source="TunnelVersRiveSud" target="SortirCoteRiveSud">
+            <graphics/>
+            <inscription>
+                <value>Default,1</value>
+                <graphics/>
+            </inscription>
+            <tagged>
+                <value>false</value>
+            </tagged>
+            <arcpath id="000" x="461" y="191" curvePoint="false"/>
+            <arcpath id="001" x="680" y="191" curvePoint="false"/>
+            <type value="normal"/>
+        </arc>
+    </net>
+</pnml>

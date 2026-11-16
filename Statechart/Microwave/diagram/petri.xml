@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<pnml>
+    <net>
+        <token id="Default" red="0" green="0" blue="0"/>
+        <place id="tunnel libre">
+            <graphics>
+                <position x="415.0" y="261.0"/>
+            </graphics>
+            <name>
+                <value>P0</value>
+                <graphics>
+                    <offset x="-5.0" y="35.0"/>
+                </graphics>
+            </name>
+            <capacity>
+                <value>0</value>
+            </capacity>
+            <initialMarking>
+                <graphics>
+                    <offset x="0.0" y="0.0"/>
+                </graphics>
+                <value>Default,1</value>
+            </initialMarking>
+        </place>
+        <place id="entree montreal">
+            <graphics>
+                <position x="217.0" y="187.0"/>
+            </graphics>
+            <name>
+                <value>P2</value>
+                <graphics>
+                    <offset x="-5.0" y="35.0"/>
+                </graphics>
+            </name>
+            <capacity>
+                <value>0</value>
+            </capacity>
+            <initialMarking>
+                <graphics>
+                    <offset x="0.0" y="0.0"/>
+                </graphics>
+                <value>Default,1</value>
+            </initialMarking>
+        </place>
+        <place id="tunnel vers rive sud">
+            <graphics>
+                <position x="516.0" y="167.0"/>
+            </graphics>
+            <name>
+                <value>P1</value>
+                <graphics>
+                    <offset x="55.0" y="-17.0"/>
+                </graphics>
+            </name>
+            <capacity>
+                <value>0</value>
+            </capacity>
+            <initialMarking>
+                <graphics>
+                    <offset x="0.0" y="0.0"/>
+                </graphics>
+                <value></value>
+            </initialMarking>
+        </place>
+        <place id="autorisation rive sud">
+            <graphics>
+                <position x="617.0" y="477.0"/>
+            </graphics>
+            <name>
+                <value>P6</value>
+                <graphics>
+                    <offset x="-5.0" y="35.0"/>
+                </graphics>
+            </name>
+            <capacity>
+                <value>0</value>
+            </capacity>
+            <initialMarking>
+                <graphics>
+                    <offset x="0.0" y="0.0"/>
+                </graphics>
+                <value></value>
+            </initialMarking>
+        </place>
+        <place id="tunnel vers montreal">
+            <graphics>
+                <position x="521.0" y="371.0"/>
+            </graphics>
+            <name>
+                <value>P5</value>
+                <graphics>
+                    <offset x="-5.0" y="35.0"/>
+                </graphics>
+            </name>
+            <capacity>
+                <value>0</value>
+            </capacity>
+            <initialMarking>
+                <graphics>
+                    <offset x="0.0" y="0.0"/>
+                </graphics>
+                <value></value>
+            </initialMarking>
+        </place>
+        <place id="entree rive sud">
+            <graphics>
+                <position x="173.0" y="405.0"/>
+            </graphics>
+            <name>
+                <value>P3</value>
+                <graphics>
+                    <offset x="57.0" y="51.0"/>
+                </graphics>
+            </name>
+            <capacity>
+                <value>0</value>
+            </capacity>
+            <initialMarking>
+                <graphics>
+                    <offset x="0.0" y="0.0"/>
+                </graphics>
+                <value>Default,1</value>
+            </initialMarking>
+        </place>
+        <place id="autorisation montreal">
+            <graphics>
+                <position x="316.0" y="477.0"/>
+            </graphics>
+            <name>
+                <value>P4</value>
+                <graphics>
+                    <offset x="-5.0" y="35.0"/>
+                </graphics>
+            </name>
+            <capacity>
+                <value>0</value>
+            </capacity>
+            <initialMarking>
+                <graphics>
+                    <offset x="0.0" y="0.0"/>
+                </graphics>
+                <value>Default,1</value>
+            </initialMarking>
+        </place>
+        <transition id="sortir cote montreal">
+            <graphics>
+                <position x="629.0" y="381.0"/>
+            </graphics>
+            <name>
+                <value>T3</value>
+                <graphics>
+                    <offset x="58.0" y="-20.0"/>
+                </graphics>
+            </name>
+            <infiniteServer>
+                <value>false</value>
+            </infiniteServer>
+            <timed>
+                <value>false</value>
+            </timed>
+            <priority>
+                <value>1</value>
+            </priority>
+            <orientation>
+                <value>0</value>
+            </orientation>
+            <rate>
+                <value>1</value>
+            </rate>
+        </transition>
+        <transition id="entree de montreal">
+            <graphics>
+                <position x="351.0" y="186.0"/>
+            </graphics>
+            <name>
+                <value>T0</value>
+                <graphics>
+                    <offset x="60.0" y="-28.0"/>
+                </graphics>
+            </name>
+            <infiniteServer>
+                <value>false</value>
+            </infiniteServer>
+            <timed>
+                <value>false</value>
+            </timed>
+            <priority>
+                <value>1</value>
+            </priority>
+            <orientation>
+                <value>0</value>
+            </orientation>
+            <rate>
+                <value>1</value>
+            </rate>
+        </transition>
+        <transition id="entree de rive sud">
+            <graphics>
+                <position x="344.0" y="383.0"/>
+            </graphics>
+            <name>
+                <value>T2</value>
+                <graphics>
+                    <offset x="-6.0" y="50.0"/>
+                </graphics>
+            </name>
+            <infiniteServer>
+                <value>false</value>
+            </infiniteServer>
+            <timed>
+                <value>false</value>
+            </timed>
+            <priority>
+                <value>1</value>
+            </priority>
+            <orientation>
+                <value>0</value>
+            </orientation>
+            <rate>
+                <value>1</value>
+            </rate>
+        </transition>
+        <transition id="sortir cote rive sud">
+            <graphics>
+                <position x="611.0" y="198.0"/>
+            </graphics>
+            <name>
+                <value>T1</value>
+                <graphics>
+                    <offset x="-5.0" y="35.0"/>
+                </graphics>
+            </name>
+            <infiniteServer>
+                <value>false</value>
+            </infiniteServer>
+            <timed>
+                <value>false</value>
+            </timed>
+            <priority>
+                <value>1</value>
+            </priority>
+            <orientation>
+                <value>0</value>
+            </orientation>
+            <rate>
+                <value>1</value>
+            </rate>
+        </transition>
+        <arc id="T1 TO P0" source="sortir cote rive sud" target="tunnel libre">
+            <arcpath id="" x="616.0" y="228.0" curvePoint="false"/>
+            <arcpath id="" x="617.0" y="272.0" curvePoint="false"/>
+            <arcpath id="" x="445.0" y="276.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="T2 TO P5" source="entree de rive sud" target="tunnel vers montreal">
+            <arcpath id="" x="354.0" y="398.0" curvePoint="false"/>
+            <arcpath id="" x="521.0" y="387.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="T3 TO P4" source="sortir cote montreal" target="autorisation montreal">
+            <arcpath id="" x="634.0" y="411.0" curvePoint="false"/>
+            <arcpath id="" x="638.0" y="446.0" curvePoint="false"/>
+            <arcpath id="" x="329.0" y="458.0" curvePoint="false"/>
+            <arcpath id="" x="330.0" y="477.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="T1 TO P6" source="sortir cote rive sud" target="autorisation rive sud">
+            <arcpath id="" x="621.0" y="213.0" curvePoint="false"/>
+            <arcpath id="" x="694.0" y="215.0" curvePoint="false"/>
+            <arcpath id="" x="688.0" y="486.0" curvePoint="false"/>
+            <arcpath id="" x="647.0" y="490.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="T3 TO P0" source="sortir cote montreal" target="tunnel libre">
+            <arcpath id="" x="629.0" y="396.0" curvePoint="false"/>
+            <arcpath id="" x="443.0" y="284.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="T0 TO P2" source="entree de montreal" target="entree montreal">
+            <arcpath id="" x="356.0" y="186.0" curvePoint="false"/>
+            <arcpath id="" x="356.0" y="163.0" curvePoint="false"/>
+            <arcpath id="" x="237.0" y="163.0" curvePoint="false"/>
+            <arcpath id="" x="234.0" y="187.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="T0 TO P1" source="entree de montreal" target="tunnel vers rive sud">
+            <arcpath id="" x="361.0" y="201.0" curvePoint="false"/>
+            <arcpath id="" x="516.0" y="184.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="T2 TO P3" source="entree de rive sud" target="entree rive sud">
+            <arcpath id="" x="344.0" y="398.0" curvePoint="false"/>
+            <arcpath id="" x="192.0" y="383.0" curvePoint="false"/>
+            <arcpath id="" x="190.0" y="405.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="P6 TO T2" source="autorisation rive sud" target="entree de rive sud">
+            <arcpath id="" x="617.0" y="492.0" curvePoint="false"/>
+            <arcpath id="" x="427.0" y="491.0" curvePoint="false"/>
+            <arcpath id="" x="428.0" y="441.0" curvePoint="false"/>
+            <arcpath id="" x="346.0" y="439.0" curvePoint="false"/>
+            <arcpath id="" x="349.0" y="413.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="P4 TO T0" source="autorisation montreal" target="entree de montreal">
+            <arcpath id="" x="316.0" y="492.0" curvePoint="false"/>
+            <arcpath id="" x="127.0" y="490.0" curvePoint="false"/>
+            <arcpath id="" x="136.0" y="243.0" curvePoint="false"/>
+            <arcpath id="" x="355.0" y="245.0" curvePoint="false"/>
+            <arcpath id="" x="356.0" y="216.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="P2 TO T0" source="entree montreal" target="entree de montreal">
+            <arcpath id="" x="247.0" y="202.0" curvePoint="false"/>
+            <arcpath id="" x="351.0" y="201.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="P0 TO T0" source="tunnel libre" target="entree de montreal">
+            <arcpath id="" x="419.0" y="265.0" curvePoint="false"/>
+            <arcpath id="" x="356.0" y="216.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="P0 TO T2" source="tunnel libre" target="entree de rive sud">
+            <arcpath id="" x="422.0" y="288.0" curvePoint="false"/>
+            <arcpath id="" x="349.0" y="383.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="P1 TO T1" source="tunnel vers rive sud" target="sortir cote rive sud">
+            <arcpath id="" x="545.0" y="187.0" curvePoint="false"/>
+            <arcpath id="" x="611.0" y="213.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="P3 TO T2" source="entree rive sud" target="entree de rive sud">
+            <arcpath id="" x="203.0" y="418.0" curvePoint="false"/>
+            <arcpath id="" x="344.0" y="398.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+        <arc id="P5 TO T3" source="tunnel vers montreal" target="sortir cote montreal">
+            <arcpath id="" x="551.0" y="388.0" curvePoint="false"/>
+            <arcpath id="" x="629.0" y="396.0" curvePoint="false"/>
+            <type value="normal"/>
+            <inscription>
+                <value>Default,1</value>
+            </inscription>
+        </arc>
+    </net>
+</pnml>
