@@ -1,4 +1,185 @@
-<h1>IFT 3911 - Devoir 2</h1><h2>Informations générales</h2><div class="info"><p><span class="label">Nom :</span>
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"/><title>IFT 3911 - Devoir 2</title><script>
+        window.MathJax = {
+            tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
+        };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script><style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 0 40px;
+            font-size: 20px;
+            line-height: 1.75;
+            color: #222;
+        }
+
+        h1 {
+            font-size: 40px;
+            margin-bottom: 35px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #222;
+        }
+
+        h2 {
+            font-size: 31px;
+            margin-top: 45px;
+            margin-bottom: 18px;
+            padding-bottom: 7px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        h3 {
+            font-size: 26px;
+            margin-top: 35px;
+            margin-bottom: 15px;
+        }
+
+        h4 {
+            font-size: 22px;
+            margin-top: 28px;
+            margin-bottom: 12px;
+        }
+
+        .info {
+            background-color: #f5f5f5;
+            padding: 22px 26px;
+            border-radius: 6px;
+        }
+
+        .info p {
+            margin: 5px 0;
+        }
+
+        .label {
+            font-weight: bold;
+            display: inline-block;
+            width: 120px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 30px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f5f5f5;
+        }
+
+        .first_col {
+            font-weight: bold;
+        }
+
+        ol {
+            padding-left: 27px;
+        }
+
+        li {
+            margin-bottom: 18px;
+            padding-left: 5px;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto 30px auto;
+            border: 1px solid #ddd;
+        }
+
+        code {
+            background-color: #f3f3f3;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 18px;
+        }
+
+        .principe {
+            font-style: italic;
+        }
+
+        figure {
+    margin: 35px 0 50px 0;
+    text-align: center;
+}
+
+figure img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+}
+
+figcaption {
+    margin-top: 10px;
+    font-size: 18px;
+    font-style: italic;
+    color: #555;
+}
+    </style><style>
+figure.diagramme { margin: 26px 0 36px; text-align: center; }
+figure.diagramme img { display:block; width:auto; max-width:100%; height:auto; max-height: 850px; object-fit:contain; margin: 0 auto; }
+figure.diagramme figcaption { margin-top:10px; font-size:18px; font-style:italic; color:#555; }
+.mjx-container {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+    }
+
+    body {
+        background-color: #121212;
+        color: #e8e8e8;
+    }
+
+    h1 {
+        border-bottom-color: #e8e8e8;
+    }
+
+    h2 {
+        border-bottom-color: #444;
+    }
+
+    .info,
+    th {
+        background-color: #242424;
+    }
+
+    th,
+    td {
+        border-color: #444;
+    }
+
+    img,
+    figure img {
+        border-color: #444;
+    }
+
+    code {
+        background-color: #242424;
+    }
+
+    figcaption,
+    figure.diagramme figcaption {
+        color: #aaa;
+    }
+}
+@media print { body { margin: 12mm auto; padding: 0 5mm; } h2,h3 {break-after:avoid;} figure {break-inside: avoid;} }
+</style></head><body><h1>IFT 3911 - Devoir 2</h1><h2>Informations générales</h2><div class="info"><p><span class="label">Nom :</span>
             Noura Deconde</p><p><span class="label">Matricule :</span>
             7806</p><p><span class="label">Courriel :</span>
             noura.deconde@umontreal.ca</p><p><span class="label">Temps mis :</span>
@@ -587,3 +768,5 @@
 <p><strong>Médiateur.</strong> Les contrôleurs font communiquer des objets qui ne se connaissent pas. Par exemple, <em>ControleurRecherche</em> reçoit le filtre de <em>CreateurFiltresVoyages</em> et le donne à <em>CatalogueVoyages</em>, sans que le créateur et le catalogue se parlent. <em>ServicePaiement</em> joue le même rôle entre <em>ElementAPayer</em> et <em>ProcesseurPaiement</em>. Cela réduit le couplage entre ces classes.</p>
 
 </section>
+
+</body></html>
